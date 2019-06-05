@@ -89,6 +89,29 @@ server.delete('/api/cohorts/:id', async (req, res) => {
   } catch (error) {}
 });
 
+
+
+
+
+
+
+// list all Students
+server.get('/api/students', async (req, res) => {
+    // get the cohorts from the database
+    try {
+      const students = await db('students'); // all the records from the table
+      res.status(200).json(students);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  });
+  
+
+
+
+
+
+
 const port = process.env.PORT || 5000;
 server.listen(port, () =>
   console.log(`\n** API running on http://localhost:${port} **\n`)
